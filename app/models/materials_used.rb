@@ -1,0 +1,2 @@
+class MaterialsUsed < ApplicationRecord
+end
