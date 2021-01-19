@@ -1,0 +1,10 @@
+.row
+    = search_form_for @q do |f|
+        = f.collection_select :id, @materials, :id, :name, {prompt: '材料を選択してください'}, {class: 'browser-default'}
+        = f.submit class: 'waves-effect waves-teal btn-flat'
+.row
+
+    - @products.each do |product|
+        
+        p = product.name
+        p = product.product_detail.description

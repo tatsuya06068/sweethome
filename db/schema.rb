@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2021_01_17_060221) do
   end
 
   create_table "materials_useds", charset: "utf8", force: :cascade do |t|
+    t.integer "product_id"
     t.integer "material_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -26,6 +27,7 @@ ActiveRecord::Schema.define(version: 2021_01_17_060221) do
 
   create_table "product_details", charset: "utf8", force: :cascade do |t|
     t.string "description"
+    t.integer "product_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -34,8 +36,6 @@ ActiveRecord::Schema.define(version: 2021_01_17_060221) do
     t.string "name", null: false
     t.date "displayfrome", null: false
     t.date "displayto"
-    t.integer "product_detail_id"
-    t.integer "materials_used_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
