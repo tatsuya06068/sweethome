@@ -1,3 +1,3 @@
 class Material < ApplicationRecord
-    has_many :materials_useds
+  has_many :materials_useds
 end
