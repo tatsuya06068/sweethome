@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :material do
-    name { "MyString" }
+    name { 'チョコ' }
   end
 end
