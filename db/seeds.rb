@@ -7,8 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 10.times do |n|
-  Product.create!(name: "ケーキ", displayfrome: "2021-01-01")
-  ProductDetail.create!(description: "ケーキの詳細情報#{n + 1}", product_id: (n + 1).to_s)
-  MaterialsUsed.create!(product_id: (n + 1).to_s, material_id: (n + 1).to_s)
-  Material.create!(name: "小麦#{n + 1}")
+  Product.create!(name: "チョコ", displayfrome: "2021-01-01")
+  ProductDetail.create!(description: "チョコの詳細#{n + 1}", product_id: (11 + n).to_s)
+  MaterialsUsed.create!(product_id: (11 + n).to_s, material_id: (n + 1).to_s)
 end

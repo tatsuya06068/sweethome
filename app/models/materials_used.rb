@@ -1,4 +1,4 @@
 class MaterialsUsed < ApplicationRecord
-  belongs_to :products, optional: true
-  belongs_to :materials, optional: true
+  belongs_to :product, optional: true
+  belongs_to :material, optional: true
 end

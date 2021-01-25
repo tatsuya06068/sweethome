@@ -81,6 +81,9 @@ GEM
     concurrent-ruby (1.1.8)
     crass (1.0.6)
     database_cleaner (1.8.5)
+    debase (0.2.4.1)
+      debase-ruby_core_source (>= 0.10.2)
+    debase-ruby_core_source (0.10.12)
     diff-lcs (1.4.4)
     erubi (1.10.0)
     factory_bot (5.2.0)
@@ -204,6 +207,8 @@ GEM
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 0.90.0, < 2.0)
+    ruby-debug-ide (0.7.2)
+      rake (>= 0.8.1)
     ruby-progressbar (1.11.0)
     rubyzip (2.3.0)
     sass-rails (6.0.0)
@@ -274,6 +279,7 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   database_cleaner
+  debase
   factory_bot_rails (= 5.2.0)
   html2slim
   jbuilder (~> 2.7)
@@ -287,6 +293,7 @@ DEPENDENCIES
   rspec-rails (~> 3.9)
   rubocop
   rubocop-rails
+  ruby-debug-ide
   sass-rails (>= 6)
   selenium-webdriver
   slim-rails

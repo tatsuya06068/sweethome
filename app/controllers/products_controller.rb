@@ -1,16 +1,17 @@
 class ProductsController < ApplicationController
   def index
-    @q = Product.includes(:product_detail).ransack(params[:q])
+    @q = Product.ransack(params[:q])
     @materials = Material.all
-    @products = @q.result
+    @products = @q.result.includes(:product_detail, :materials_useds, :materials)
     # Product.includes([:product_details, materials_useds: :materias])
   end
 
-  def Show; end
+  def Show
+　 end
 
   private
 
   def search_params
-    params.require(:q).permit(:material_id)
+    params.require(:q).permit(:materials_id)
   end
 end
