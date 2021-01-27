@@ -1,3 +1,4 @@
+console
 .row
     = search_form_for @q do |f|
         = f.collection_select :materials_id_eq, @materials, :id, :name, {selected: :id, prompt: '材料を選択してください'}, {class: 'browser-default'}
@@ -8,4 +9,4 @@
         
         p = product.name
         p = product.product_detail.description
-        p = product.find(materials_id).name
+     
