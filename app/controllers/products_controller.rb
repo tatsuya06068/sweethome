@@ -3,8 +3,8 @@ class ProductsController < ApplicationController
     console
     @q = Product.ransack(params[:q])
     @materials = Material.all
-    @products = @q.result.includes(:product_detail, materials: :materials_useds)
-    # Product.includes([:product_details, materials_useds: :materias])
+    @categories = Category.all
+    @products = @q.result.includes(:product_detail, :category, materials: :materials_useds)
   end
 
   def Show
@@ -13,6 +13,6 @@ class ProductsController < ApplicationController
   private
 
   def search_params
-    params.require(:q).permit(:materials_id)
+    params.require(:q).permit(:materials_id, :category_id)
   end
 end
