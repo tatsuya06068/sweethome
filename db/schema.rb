@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_17_060221) do
+ActiveRecord::Schema.define(version: 2021_01_28_110049) do
+
+  create_table "categories", charset: "utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "materials", charset: "utf8", force: :cascade do |t|
     t.string "name"
@@ -19,25 +25,34 @@ ActiveRecord::Schema.define(version: 2021_01_17_060221) do
   end
 
   create_table "materials_useds", charset: "utf8", force: :cascade do |t|
-    t.integer "product_id"
-    t.integer "material_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "product_id"
+    t.bigint "material_id"
+    t.index ["material_id"], name: "index_materials_useds_on_material_id"
+    t.index ["product_id"], name: "index_materials_useds_on_product_id"
   end
 
   create_table "product_details", charset: "utf8", force: :cascade do |t|
     t.string "description"
-    t.integer "product_id"
+    t.bigint "product_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id"], name: "index_product_details_on_product_id"
   end
 
   create_table "products", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
     t.date "displayfrome", null: false
     t.date "displayto"
+    t.bigint "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_products_on_category_id"
   end
 
+  add_foreign_key "materials_useds", "materials"
+  add_foreign_key "materials_useds", "products"
+  add_foreign_key "product_details", "products"
+  add_foreign_key "products", "categories"
 end
