@@ -1,13 +1,18 @@
 console
 .row
     = search_form_for @q do |f|
+    	= f.label :materials_id_gteq, '使用食材', class: ''
         = f.collection_select :materials_id_eq, @materials, :id, :name, {selected: params.dig(:q, :materials_id_eq), include_blank: true}, {class: 'browser-default'}
+        = f.label :materials_id_gteq, '使用食材', class: ''
         = f.collection_select :category_id_eq, @categories, :id, :name, {selected: params.dig(:q, :category_id_eq), include_blank: true}, {class: 'browser-default'}
         = f.submit class: 'waves-effect waves-teal btn-flat'
-.row
+.row.center
 
     - @products.each do |product|
-        
-        p = product.name
-        p = product.product_detail.description
+       .col.s12.m4.l2	
+       	.card
+		.card-content
+			span = product.name
+		.card-content
+               		p = product.product_detail.description
         
