@@ -1,12 +1,20 @@
 console
-.row
+.row 
+  .container 
     = search_form_for @q do |f|
-    	= f.label :materials_id_gteq, '使用食材', class: ''
-        = f.collection_select :materials_id_eq, @materials, :id, :name, {selected: params.dig(:q, :materials_id_eq), include_blank: true}, {class: 'browser-default'}
-        = f.label :materials_id_gteq, '使用食材', class: ''
-        = f.collection_select :category_id_eq, @categories, :id, :name, {selected: params.dig(:q, :category_id_eq), include_blank: true}, {class: 'browser-default'}
-        = f.submit class: 'waves-effect waves-teal btn-flat'
-.row.center
+      .col.s12
+        .row
+          .col.s12.m6.l4
+            = f.label :materials_id_gteq, '使用食材', class: ''
+            = f.collection_select :materials_id_eq, @materials, :id, :name, {selected: params.dig(:q, :materials_id_eq), include_blank: true}, {class: 'browser-default'}
+          .col.s12.m6.l4
+            = f.label :category_id_gteq, 'カテゴリー', class: ''
+            = f.collection_select :category_id_eq, @categories, :id, :name, {selected: params.dig(:q, :category_id_eq), include_blank: true}, {class: 'browser-default s6'}
+        .row
+          .col.s6
+            = f.button '検索', class: 'waves-effect waves-teal btn amber darken-3'
+
+.container.row.center
 
     - @products.each do |product|
        .col.s12.m4.l2	

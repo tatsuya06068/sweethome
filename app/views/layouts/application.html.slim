@@ -9,15 +9,16 @@ html
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
-  nav.nav-extended.amber.darken-3
-    .nav-wrapper.center
-      .brand-logo sweethome
-      .right
-        button.waves-effect.waves-teal.btn-flat = link_to 'ログイン', top_path, class: ''
-    .nav-content
-      ul.tabs.tabs-transparent.row
-        li.tab.col.s12.m6.l3 = link_to 'HOME', top_path, class: 'active waves-effect waves-teal'
-        li.tab.col.s12.m6.l3 = link_to 'お店紹介', top_path, class: 'active waves-effect waves-teal'
-        li.tab.col.s12.m6.l3 = link_to '商品', products_path, class: 'active waves-effect waves-teal'
-        li.tab.col.s12.m6.l3 = link_to '問い合わせ', top_path, class: 'active waves-effect waves-teal'
+    .row
+      nav.nav-extended.amber.darken-3
+        .nav-wrapper.center
+          .brand-logo sweethome
+          .right
+            button.waves-effect.waves-teal.btn-flat = link_to 'ログイン', top_path, class: ''
+        .nav-content
+          ul.tabs.tabs-transparent.row
+            li.tab.col.s12.m6.l3 = link_to 'HOME', top_path, class: 'active waves-effect waves-teal'
+            li.tab.col.s12.m6.l3 = link_to 'お店紹介', top_path, class: 'active waves-effect waves-teal'
+            li.tab.col.s12.m6.l3 = link_to '商品', products_path, class: 'active waves-effect waves-teal'
+            li.tab.col.s12.m6.l3 = link_to '問い合わせ', top_path, class: 'active waves-effect waves-teal'
   = yield
