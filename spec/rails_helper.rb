@@ -2,7 +2,7 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-
+require 'support/factory_bot'
 Capybara.register_driver :remote_chrome do |app|
   url = "http://chrome:4444/wd/hub"
   caps = ::Selenium::WebDriver::Remote::Capabilities.chrome(

@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2021_01_28_110049) do
 
   create_table "products", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
-    t.date "displayfrome", null: false
+    t.date "displayfrom", null: false
     t.date "displayto"
     t.bigint "category_id"
     t.datetime "created_at", precision: 6, null: false
