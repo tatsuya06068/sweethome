@@ -68,3 +68,7 @@ gem 'ransack'
 gem 'slim-rails'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'administrate'
+gem 'administrate-field-image'
+gem 'devise'
+gem 'devise-i18n'
+
