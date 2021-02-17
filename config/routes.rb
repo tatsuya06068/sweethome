@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  namespace :admins do
-    resources :admin
-  end
+  #namespace :admins do
+  #  resources :admin
+  #end
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
     passwords:     'admins/passwords',
@@ -12,15 +12,9 @@ Rails.application.routes.draw do
     passwords:     'users/passwords',
     registrations: 'users/registrations'
   }
-  namespace :admin do
-      resources :categories
-      resources :materials
-      resources :materials_useds
-      resources :products
-      resources :product_details
-
-      root to: "categories#index"
-    end
+  #namespace :admin do
+  #    root to: 'admin#index'
+  #  end
   root to: 'top#index'
   get '/top', to: 'top#index'
 
