@@ -1,6 +1,5 @@
 class ProductsController < ApplicationController
   def index
-    console
     @q = Product.ransack(params[:q])
     @materials = Material.all
     @categories = Category.all
