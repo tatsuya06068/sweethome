@@ -2,7 +2,7 @@ require 'rails_helper'
 RSpec.describe Admins, type: :model do
 
     it "パスワード,emailがある場合、有効である" do 
-      admin = FactryBot.create(:admin)
+      admin = create(:admin)
       admin.valid?
       expect(admin).to be_valid
     end
@@ -15,12 +15,12 @@ RSpec.describe Admins, type: :model do
 
     it "パスワードがない場合、無効である" do
       admin = FactoryBot.build(:admin, password: nil)
-      product.valid?
-      expect(product.errors[:password]).to include("を入力してください")
+      admin.valid?
+      expect(admin.errors[:password]).to include("を入力してください")
     end
 
     it "パスワードが暗号化されているか" do
       admin = FactoryBot.create(:admin)
-      expect(admin.encrypt_password).to_not eq "password"
+      expect(admin.encrypted_password).to_not eq "password"
     end
 end
