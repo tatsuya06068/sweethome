@@ -5,11 +5,11 @@ h2
         = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
           .row
             .input-field
-              = f.email_field :email, autofocus: true, autocomplete: "email"
+              = f.email_field :email, autofocus: true, autocomplete: "email", id: 'email'
               = f.label :email
           .row
             .input-field
-              = f.password_field :password, autocomplete: "current-password"
+              = f.password_field :password, autocomplete: "current-password", id: 'password'
               =f.label :password
           .row
             = f.submit "ログイン",class: "effect waves-light btn"

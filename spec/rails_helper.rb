@@ -19,6 +19,8 @@ Capybara.register_driver :remote_chrome do |app|
 end
 
 RSpec.configure do |config|
+  config.include Devise::Test::IntegrationHelpers, type: :request #sign_inヘルパーを提供してくれます
+  config.include FactoryBot::Syntax::Methods #ついでにFactoryBotもincludeしておきます
   config.before(:each, type: :system) do
     driven_by :rack_test
   end
