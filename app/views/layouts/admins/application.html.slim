@@ -16,12 +16,13 @@ html
           - if admin_signed_in?
             .right
               = button_to 'ログアウト', destroy_admin_session_path, method: :delete
-            .nav-content
+            .nav-content.container
               ul.tabs.tabs-transparent.row
-                li.tab.col.s12.m6.l3 = link_to 'HOME', top_path, class: 'active waves-effect waves-teal'
-                li.tab.col.s12.m6.l3 = link_to 'お店紹介', top_path, class: 'active waves-effect waves-teal'
-                li.tab.col.s12.m6.l3 = link_to '商品', products_path, class: 'active waves-effect waves-teal'
-                li.tab.col.s12.m6.l3 = link_to '問い合わせ', top_path, class: 'active waves-effect waves-teal'
+                  li.tab.col.s12.m6.l2 = link_to 'HOME', top_path, class: 'active waves-effect waves-teal'
+                  li.tab.col.s12.m6.l2 = link_to '商品', top_path, class: 'active waves-effect waves-teal'
+                  li.tab.col.s12.m6.l2 = link_to 'カテゴリー', products_path, class: 'active waves-effect waves-teal'
+                  li.tab.col.s12.m6.l2 = link_to '材料', products_path, class: 'active waves-effect waves-teal'
+                  li.tab.col.s12.m6.l2 = link_to '問い合わせ', top_path, class: 'active waves-effect waves-teal'
   .container.center 
     .row
       .col.s12.m6.l4.offset-l4.offset-m4
