@@ -1,0 +1,19 @@
+.row 
+  .container 
+    = search_form_for @q do |f|
+      .col.s12
+        .row
+          .col.s12.m6.l4
+            = f.label :materials_id_gteq, '使用食材', class: ''
+            = f.collection_select :materials_id_eq, @materials, :id, :name, {selected: params.dig(:q, :materials_id_eq), include_blank: true}, {class: 'browser-default'}
+          .col.s12.m6.l4
+            = f.label :category_id_gteq, 'カテゴリー', class: ''
+            = f.collection_select :category_id_eq, @categories, :id, :name, {selected: params.dig(:q, :category_id_eq), include_blank: true}, {class: 'browser-default s6'}
+        .row
+          .col.s6
+            = f.button '検索', class: 'waves-effect waves-teal btn amber darken-3'
+    .row
+      .col.l4.s6.ml4.s6.m6
+        =link_to '新規登録', new_admin_product_path, class: 'waves-effect waves-teal btn' 
+
+

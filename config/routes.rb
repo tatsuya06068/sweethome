@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   namespace :admin do
+      resources :product
       root to: 'home#index'
     end
   root to: 'top#index'

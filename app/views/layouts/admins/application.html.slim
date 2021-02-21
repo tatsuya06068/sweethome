@@ -19,13 +19,12 @@ html
             .nav-content.container
               ul.tabs.tabs-transparent.row
                   li.tab.col.s12.m6.l2 = link_to 'HOME', top_path, class: 'active waves-effect waves-teal'
-                  li.tab.col.s12.m6.l2 = link_to '商品', top_path, class: 'active waves-effect waves-teal'
+                  li.tab.col.s12.m6.l2 = link_to '商品', admin_product_index_path, class: 'active waves-effect waves-teal'
                   li.tab.col.s12.m6.l2 = link_to 'カテゴリー', products_path, class: 'active waves-effect waves-teal'
                   li.tab.col.s12.m6.l2 = link_to '材料', products_path, class: 'active waves-effect waves-teal'
                   li.tab.col.s12.m6.l2 = link_to '問い合わせ', top_path, class: 'active waves-effect waves-teal'
   .container.center 
     .row
       .col.s12.m6.l4.offset-l4.offset-m4
-        p.alert.alert-notice.light-blue #{notice} 
         h6.alert.red-text.text-accent-3.large #{alert}
   = yield
