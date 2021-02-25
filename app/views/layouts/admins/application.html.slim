@@ -8,6 +8,11 @@ html
     = csp_meta_tag
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    javascript:
+       document.addEventListener('DOMContentLoaded', function() {
+             var elems = document.querySelectorAll('select');
+                   var instances = M.FormSelect.init(elems,[]);
+                       });
   body
     .row
       nav.nav-extended.cyan.accent-4
