@@ -9,6 +9,9 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import '../stylesheets/application'
 import 'materialize-css/dist/js/materialize'
+
+import '../src/add_select_btn'
+
 M.AutoInit();
 Rails.start()
 Turbolinks.start()

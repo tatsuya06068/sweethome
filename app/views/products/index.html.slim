@@ -18,7 +18,8 @@
     - @products.each do |product|
        .col.s12.m4.l2	
        	.card
-		.card-content
+          .card-content
+            span = image_tag product.image if product.image.attached?
 			span = product.name
 		.card-content
                		p = product.product_detail.description
