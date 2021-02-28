@@ -6,15 +6,28 @@
 // All it does is render <div>Hello Vue</div> at the bottom of the page.
 
 import Vue from 'vue'
-import App from '../app.vue'
+import App from '../delete_btn.vue'
 
-const add_btn = document.querySelector('#select_add_btn')
-  add_btn.addEventListener('click', event) => {
-  const app = new Vue({
-    render: h => h(App)
-  }).$mount()
-  console.log(app)
+document.addEventListener('DOMContentLoaded', () => {
+	const app = new Vue({
+		      render: h => h(App)
+		    }).$mount()
+	const material_selects = document.querySelector('#material_selects')
+	  let delete_btn = material_selects.querySelectorAll('.delete_btn')
+	  
+	delete_btn.forEach(function(target){
+		target.appendChild(app.$el)
+	});
+    const add_btn = document.querySelector('#select_add_btn')	
+	add_btn.addEventListener('click', () => {
+		console.log(material_selects);
+		let del_btn = material_selects.querySelector('.delete_btn').lastChild;
+		console.log(del_btn)
+		del_btn.appendChild(app.$el)
+	})
+
 })
+
 
 
 // The above code uses Vue without the compiler, which means you cannot
@@ -49,23 +62,4 @@ const add_btn = document.querySelector('#select_add_btn')
 // If the project is using turbolinks, install 'vue-turbolinks':
 //
 // yarn add vue-turbolinks
-//
-// Then uncomment the code block below:
-//
-// import TurbolinksAdapter from 'vue-turbolinks'
-// import Vue from 'vue/dist/vue.esm'
-// import App from '../app.vue'
-//
-// Vue.use(TurbolinksAdapter)
-//
-// document.addEventListener('turbolinks:load', () => {
-//   const app = new Vue({
-//     el: '#hello',
-//     data: () => {
-//       return {
-//         message: "Can you say hello?"
-//       }
-//     },
-//     components: { App }
-//   })
-// })
+

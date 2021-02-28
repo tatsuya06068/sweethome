@@ -8,6 +8,8 @@ html
     = csp_meta_tag
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'delete_btn_vue'
+    = stylesheet_pack_tag 'delete_btn_vue'
     javascript:
        document.addEventListener('DOMContentLoaded', function() {
              var elems = document.querySelectorAll('select');

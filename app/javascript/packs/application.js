@@ -11,8 +11,10 @@ import '../stylesheets/application'
 import 'materialize-css/dist/js/materialize'
 
 import '../src/add_select_btn'
+import '../src/delete_btn'
 
 M.AutoInit();
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
