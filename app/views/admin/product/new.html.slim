@@ -5,11 +5,12 @@
       = f.collection_select :category_id, @category, :id, :name, {include_blank: true}, {class: 'browser-default'}
       = f.fields_for :materials_useds do |m|
         .input-field
-            p.btn#select_add_btn '追加'
+            p.btn#select_add_btn 追加
+            span.btn#select_del_btn 削除
             = m.label '使用食材'
             #material_selects 
-              .delete_btn
-               = m.collection_select :material_id, @materials, :id, :name, {include_blank: true}, {class: 'browser-default' }      
+              .material_select
+                = m.collection_select :material_id, @materials, :id, :name, {include_blank: false}, {class: 'browser-default'}      
       = f.label :displayfrom
       = f.date_field :displayfrom, class: 'form-control'
       = f. label :displayto

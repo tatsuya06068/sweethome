@@ -6,18 +6,15 @@ window.addEventListener('load', () =>{
 
 	add_btn.addEventListener('click', () => {
 		let material_selects = document.querySelector('#material_selects');
-		let clone = material_selects.firstChild.cloneNode(true);
+		let clone = material_selects.querySelector('.material_select').cloneNode(true);
 		let add_select = document.querySelector('#add_select')
-	
+		
 		material_selects.appendChild(clone);
-	    
-		let select_class = material_selects.lastChild;	
-		let target_select = select_class.querySelector('select');
 
-		num	= material_selects.querySelectorAll('select').length;
+		let target_select = material_selects.lastChild.querySelector('select');
+		num	= material_selects.querySelectorAll('select').length - 1;
 		target_select.name = 'product[materials_useds_attributes][' + num + '][material_id]';
 		target_select.id = 'product_materials_useds_attributes_' + num + '_material_id';
-		
 		
 	});
 
