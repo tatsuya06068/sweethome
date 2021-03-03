@@ -1,16 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
 	
-	let delete_btns = document.querySelectorAll('.delete_btn');
+	const delete_btn = document.querySelector('#select_del_btn');
 	
-	delete_btns.forEach((elm) =>{
-		elm.addEventListener('click', () => {
-			alert(elm);
-			console.log(elm);
-			let material_selects = document.querySelector('#material_selects');	
-			let select_cnt = material_selcts.children.length;
-		
-			elm.parentNode.remove();
-			material_selects.querySelector('delete_btn');
+		delete_btn.addEventListener('click', () => {
+			let material_selects = document.querySelector('#material_selects');
+			let num = material_selects.querySelectorAll('select').length
+
+			if(num > 1){
+			let target_select = material_selects.lastChild;
+			target_select.remove();
+			};
 		});
-	});
 });
