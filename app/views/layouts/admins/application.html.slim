@@ -32,4 +32,9 @@ html
     .row
       .col.s12.m6.l4.offset-l4.offset-m4
         h6.alert.red-text.text-accent-3.large #{alert}
+  .container
+    - if flash.notice.present?
+      .row
+        .container.col.cyan.accent-4.white-text 
+          h6 = flash.notice
   = yield

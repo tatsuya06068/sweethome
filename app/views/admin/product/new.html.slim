@@ -1,26 +1,4 @@
-  h1 商品新規登録画面
-  = form_with model: @product, local: true, url: admin_product_index_path do |f|
-    .form-group
-      = f.label 'カテゴリー'
-      = f.collection_select :category_id, @category, :id, :name, {include_blank: true}, {class: 'browser-default'}
-      = f.fields_for :materials_useds do |m|
-        .input-field
-            p.btn#select_add_btn 追加
-            span.btn#select_del_btn 削除
-            = m.label '使用食材'
-            #material_selects 
-              .material_select
-                = m.collection_select :material_id, @materials, :id, :name, {include_blank: false}, {class: 'browser-default'}      
-      = f.label :displayfrom
-      = f.date_field :displayfrom, class: 'form-control'
-      = f. label :displayto
-      = f.date_field :diplayto, class: 'form-control'
-      .input-field
-        = f.label :name
-        = f.text_field :name, class: 'form-control'
-      = f.fields_for :product_detail do |pd|
-       = pd.label :description
-       = pd.text_area :description, class:''
-      = f.label :image
-      = f.file_field :image, class: ''
-    = f.submit
+.container
+  h3 商品新規登録画面
+  = render partial: 'form', locals:{product: @product}
+ 

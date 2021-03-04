@@ -1,9 +1,10 @@
 class Admin::ProductController < Admin::ApplicationController
   def index
+    console
     @q = Product.ransack(params[:q])
     @materials = Material.all
     @categories = Category.all
-    @products = @q.result.includes(:product_detail, :category, materials: :materials_useds)
+    @products = @q.result.includes(:category, materials: :materials_useds)
   end
 
   def Show
@@ -11,7 +12,6 @@ class Admin::ProductController < Admin::ApplicationController
   end
 
   def new
-    console
     @product = Product.new 
     @product.build_product_detail
     @product.materials_useds.build
@@ -20,13 +20,15 @@ class Admin::ProductController < Admin::ApplicationController
   end
 
   def create
-    console
     @product = Product.new(product_params)
-    @category = Category.all
-    @materials = Material.all
-    @product.save!
-    redirect_to admin_product_index_path
     
+    if @product.save
+      redirect_to admin_product_index_path, notice: "#{@product.name}を登録しました。"
+    else
+      @category = Category.all
+      @materials = Material.all
+      render :new
+    end
   end
 
   private
