@@ -15,5 +15,21 @@
     .row
       .col.l4.s6.ml4.s6.m6
         =link_to '新規登録', new_admin_product_path, class: 'waves-effect waves-teal btn' 
+    
+      .row
+        table.striped
+          thead
+            tr
+              th= Product.human_attribute_name(:name)
+              th= Product.human_attribute_name(:category_id)
+              th= Category.human_attribute_name(:name)
+          tbody
+            - @products.each do |product|
+                tr
+                  td= product.name
+                  td= product.category.name
+                  td= join_materials product.materials
+                  
+ 
 
 
