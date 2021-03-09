@@ -1,14 +1,30 @@
 class Admin::ProductController < Admin::ApplicationController
   def index
-    console
     @q = Product.ransack(params[:q])
     @materials = Material.all
     @categories = Category.all
     @products = @q.result.includes(:category, materials: :materials_useds)
   end
 
-  def Show
-    
+  def edit
+    @materials = Material.all
+    @category = Category.all
+    @product = Product.find(params[:id])
+  end
+  
+  def update
+    @product = Product.find(params[:id])
+    if @product.update!(product_params)
+      redirect_to admin_product_index_path, notice: "#{@product.name}を更新しました。"
+    else
+      @category = Category.all
+      @materials = Material.all
+      render :edit
+    end
+  end
+
+  def show
+    @product = Product.find(params[:id])
   end
 
   def new
@@ -23,12 +39,18 @@ class Admin::ProductController < Admin::ApplicationController
     @product = Product.new(product_params)
     
     if @product.save
-      redirect_to admin_product_index_path, notice: "#{@product.name}を登録しました。"
+      render :show, notice: "#{@product.name}を登録しました。"
     else
       @category = Category.all
       @materials = Material.all
       render :new
     end
+  end
+
+  def destroy
+    product = Product.find(params[:id])
+    product.destroy
+    redirect_to admin_product_index_path, notice: "#{product.name}を削除しました。"
   end
 
   private
@@ -37,6 +59,6 @@ class Admin::ProductController < Admin::ApplicationController
     end
 
     def product_params
-      params.require(:product).permit(:name, :category_id, :displayfrom, :displayto, :image, product_detail_attributes: [:description], materials_useds_attributes: [:material_id])
+      params.require(:product).permit(:name, :category_id, :displayfrom, :displayto, :image, product_detail_attributes: [:description], materials_useds_attributes: [:id, :material_id])
     end
 end

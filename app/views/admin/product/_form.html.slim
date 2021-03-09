@@ -1,9 +1,3 @@
-  - if product.errors.present?
-      ul#error_explanation
-        - product.errors.full_messages.each do |message|
-          .red-text
-            li= message
-  = form_with model: product, local: true, url: admin_product_index_path do |f|
     .form-group
       .col.s12.m12.l12
         .row
@@ -16,7 +10,6 @@
             = f.text_field :name, class: 'form-control'
         .row 
           .col.s12.m12.l12
-            = f.fields_for :materials_useds do |m| 
               = f.label '材料' 
               .row
                 .col 
@@ -25,8 +18,9 @@
                   .btn-small.waves-effect.waves-light.red#select_del_btn 削除
               .row      
                 #material_selects
-                  .material_select.col.s6.m4.l2
-                    = m.collection_select :material_id, @materials, :id, :name, {include_blank: false}, {class: 'browser-default s12 m6 l4'}      
+                  = f.fields_for :materials_useds do |m| 
+                    .material_select.col.s6.m4.l2
+                      = m.collection_select :material_id, @materials, :id, :name, {include_blank: false}, {class: 'browser-default s12 m6 l4'}      
         .row
           .col.s12.m12.l12
             .col.s6.m4.l2
@@ -41,6 +35,7 @@
               = pd.label :description
               = pd.text_area :description, class:'materialize-textarea'
         .row.file-field.input-field
+          span = image_tag @product.image, class: 'col s4 m4 l4' if @product.image.attached?
           .btn.cyan.accent-4
             span = f.label :image, class: 'white-text'
             = f.file_field :image, accept: 'image/*'

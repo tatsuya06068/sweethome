@@ -1,6 +1,6 @@
 .row 
   .container 
-    = search_form_for @q do |f|
+    = search_form_for @q, url: admin_product_index_path do |f|
       .col.s12
         .row
           .col.s12.m6.l4
@@ -14,7 +14,7 @@
             = f.button '検索', class: 'waves-effect waves-teal btn amber darken-3'
     .row
       .col.l4.s6.ml4.s6.m6
-        =link_to '新規登録', new_admin_product_path, class: 'waves-effect waves-teal btn' 
+        = link_to '新規登録', new_admin_product_path, class: 'waves-effect waves-teal btn' 
     
       .row
         table.striped
@@ -26,10 +26,13 @@
           tbody
             - @products.each do |product|
                 tr
-                  td= product.name
+                  td= link_to product.name, admin_product_path(product)
                   td= product.category.name
                   td= join_materials product.materials
-                  
- 
+                  td
+                    .col
+                      = link_to '編集', edit_admin_product_path(product), class: 'waves-effect waves-tesl btn'
+                    .col.text-white
+                      = button_to '削除', admin_product_path(product), method: :delete, data: {confirm: "商品名「#{product.name}」を削除してよろしいでしょうか"}, class: 'btn red'
 
 

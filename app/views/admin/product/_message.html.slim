@@ -1,0 +1,6 @@
+- if product.errors.present?
+      ul#error_explanation
+        - product.errors.full_messages.each do |message|
+          .red-text
+            li= message
+

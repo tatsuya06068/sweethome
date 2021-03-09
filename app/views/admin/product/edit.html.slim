@@ -1,5 +1,5 @@
 .container
-  h3 商品新規登録画面 
+  h3 商品編集画面
   = render partial: 'message', locals:{product: @product}
-  = form_with model: @product, local: true, url: admin_product_index_path do |f|    
+  = form_with model: @product, local: true, url: admin_product_path do |f|    
     = render partial: 'form', locals:{:f => f}
