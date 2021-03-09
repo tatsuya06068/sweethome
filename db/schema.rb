@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_22_111219) do
+ActiveRecord::Schema.define(version: 2021_03_09_112327) do
 
   create_table "active_storage_attachments", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -89,7 +89,16 @@ ActiveRecord::Schema.define(version: 2021_02_22_111219) do
     t.bigint "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "money"
+    t.bigint "tax_id", null: false
     t.index ["category_id"], name: "index_products_on_category_id"
+    t.index ["tax_id"], name: "index_products_on_tax_id"
+  end
+
+  create_table "taxes", charset: "utf8", force: :cascade do |t|
+    t.integer "tax"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", charset: "utf8", force: :cascade do |t|
