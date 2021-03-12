@@ -3,21 +3,26 @@ class Admin::ProductController < Admin::ApplicationController
     @q = Product.ransack(params[:q])
     @materials = Material.all
     @categories = Category.all
+    @taxes = Tax.all
     @products = @q.result.includes(:category, materials: :materials_useds)
   end
 
   def edit
     @materials = Material.all
+    @taxes = Tax.all
     @category = Category.all
     @product = Product.find(params[:id])
   end
   
   def update
     @product = Product.find(params[:id])
-    if @product.update!(product_params)
+    if @product.valid?
+      MaterialsUsed.where(product_id: @product[:id]).delete_all
+      @product.update!(product_params)
       redirect_to admin_product_index_path, notice: "#{@product.name}を更新しました。"
     else
       @category = Category.all
+      @taxes = Tax.all
       @materials = Material.all
       render :edit
     end
@@ -32,6 +37,7 @@ class Admin::ProductController < Admin::ApplicationController
     @product.build_product_detail
     @product.materials_useds.build
     @materials = Material.all
+    @taxes = Tax.all
     @category = Category.all
   end
 
@@ -59,6 +65,6 @@ class Admin::ProductController < Admin::ApplicationController
     end
 
     def product_params
-      params.require(:product).permit(:name, :category_id, :displayfrom, :displayto, :image, product_detail_attributes: [:description], materials_useds_attributes: [:id, :material_id])
+      params.require(:product).permit(:name, :category_id, :money, :tax_id, :displayfrom, :displayto, :image, product_detail_attributes: [:description], materials_useds_attributes: [:material_id])
     end
 end
