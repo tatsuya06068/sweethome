@@ -3,6 +3,7 @@ FactoryBot.define do
         name { '商品名' }
         displayfrom { '2021-01-01' }
         displayto { '2021-12-31' }
-        association :category, factory: :category     
+        association :category, factory: :category
+        association :tax, factory: :tax     
     end
 end

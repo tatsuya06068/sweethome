@@ -14,8 +14,9 @@ Rails.application.routes.draw do
   }
   namespace :admin do
       resources :product
-      root to: 'home#index'
-    end
+      get '/home', to: 'home#index'
+      root to:  'home#index'
+  end
   root to: 'top#index'
   get '/top', to: 'top#index'
 

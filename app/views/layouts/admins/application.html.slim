@@ -23,7 +23,7 @@ html
               = button_to 'ログアウト', destroy_admin_session_path, method: :delete
             .nav-content.container
               ul.tabs.tabs-transparent.row
-                  li.tab.col.s12.m6.l2 = link_to 'HOME', top_path, class: 'active waves-effect waves-teal'
+                  li.tab.col.s12.m6.l2 = link_to 'HOME', admin_home_path, class: 'active waves-effect waves-teal'
                   li.tab.col.s12.m6.l2 = link_to '商品', admin_product_index_path, class: 'active waves-effect waves-teal'
                   li.tab.col.s12.m6.l2 = link_to 'カテゴリー', products_path, class: 'active waves-effect waves-teal'
                   li.tab.col.s12.m6.l2 = link_to '材料', products_path, class: 'active waves-effect waves-teal'

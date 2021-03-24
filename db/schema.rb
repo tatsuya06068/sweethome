@@ -120,4 +120,5 @@ ActiveRecord::Schema.define(version: 2021_03_09_112327) do
   add_foreign_key "materials_useds", "products"
   add_foreign_key "product_details", "products"
   add_foreign_key "products", "categories"
+  add_foreign_key "products", "taxes"
 end
