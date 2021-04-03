@@ -22,7 +22,7 @@
             tr
               th= Product.human_attribute_name(:name)
               th= Product.human_attribute_name(:category_id)
-              th= Category.human_attribute_name(:name)
+              th= Material.human_attribute_name(:name)
           tbody
             - @products.each do |product|
                 tr
