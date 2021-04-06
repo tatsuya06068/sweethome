@@ -32,7 +32,6 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'database_cleaner'
-  gem 'factory_bot_rails', '5.2.0'
   gem 'selenium-webdriver'
 end
 
@@ -56,8 +55,9 @@ end
 group :test do
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'capybara', '>= 3.26'
-  gem 'rspec-rails', '~>3.9'
-  gem 'webdrivers'
+  gem 'rspec-rails'
+  gem 'webdrivers' 
+  gem 'factory_bot_rails', '5.2.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -71,4 +71,4 @@ gem 'administrate'
 gem 'administrate-field-image'
 gem 'devise'
 gem 'devise-i18n'
-
+gem 'launchy'

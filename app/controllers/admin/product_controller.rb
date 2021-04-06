@@ -1,29 +1,23 @@
 class Admin::ProductController < Admin::ApplicationController
+  before_action :get_tables, only: [:index, :edit, :update, :show, :new, :create]
+
   def index
     @q = Product.ransack(params[:q])
-    @materials = Material.all
-    @categories = Category.all
-    @taxes = Tax.all
     @products = @q.result.includes(:category, materials: :materials_useds)
   end
 
   def edit
-    @materials = Material.all
-    @taxes = Tax.all
-    @category = Category.all
     @product = Product.find(params[:id])
   end
   
   def update
     @product = Product.find(params[:id])
-    if @product.valid?
+    verification =  Product.new(product_params)
+    if verification.valid? 
       MaterialsUsed.where(product_id: @product[:id]).delete_all
       @product.update!(product_params)
       redirect_to admin_product_index_path, notice: "#{@product.name}を更新しました。"
     else
-      @category = Category.all
-      @taxes = Tax.all
-      @materials = Material.all
       render :edit
     end
   end
@@ -36,9 +30,6 @@ class Admin::ProductController < Admin::ApplicationController
     @product = Product.new 
     @product.build_product_detail
     @product.materials_useds.build
-    @materials = Material.all
-    @taxes = Tax.all
-    @category = Category.all
   end
 
   def create
@@ -47,8 +38,6 @@ class Admin::ProductController < Admin::ApplicationController
     if @product.save
       render :show, notice: "#{@product.name}を登録しました。"
     else
-      @category = Category.all
-      @materials = Material.all
       render :new
     end
   end
@@ -66,5 +55,11 @@ class Admin::ProductController < Admin::ApplicationController
 
     def product_params
       params.require(:product).permit(:name, :category_id, :money, :tax_id, :displayfrom, :displayto, :image, product_detail_attributes: [:description], materials_useds_attributes: [:material_id])
+    end
+
+    def get_tables
+      @categories = Category.all  
+      @materials = Material.all    
+      @taxes = Tax.all  
     end
 end

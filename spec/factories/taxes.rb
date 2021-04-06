@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :tax do
-    tax { "MyString" }
+    tax { "10" }
   end
 end
