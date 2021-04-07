@@ -20,7 +20,7 @@ html
           .brand-logo sweethome
           - if admin_signed_in?
             .right
-              = button_to 'ログアウト', destroy_admin_session_path, method: :delete
+              button.waves-effect.waves-teal.btn-flat = link_to 'ログアウト', destroy_admin_session_path, method: :delete
             .nav-content.container
               ul.tabs.tabs-transparent.row
                   li.tab.col.s12.m6.l2 = link_to 'HOME', admin_home_path, class: 'active waves-effect waves-teal'

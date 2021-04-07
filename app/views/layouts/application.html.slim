@@ -14,10 +14,10 @@ html
         .nav-wrapper.center
           .brand-logo sweethome
           .right
-            - if admin_signed_in?
-              = button_to 'ログアウト', destroy_admin_session_path, method: :delete
+            - if user_signed_in?
+                button.waves-effect.waves-teal.btn-flat = link_to 'ログアウト', destroy_admin_session_path, method: :delete
             - else
-                button.waves-effect.waves-teal.btn-flat = link_to 'ログイン', new_user_session_path, class: ''
+                button.waves-effect.waves-teal.btn-flat = link_to 'ログイン', new_user_session_path
 
         .nav-content.container
           ul.tabs.tabs-transparent.row

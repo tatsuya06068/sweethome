@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :material do
-    name { 'チョコ' }
+    sequence(:name) { |n| "チョコ#{n}" }
   end
 end

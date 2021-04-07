@@ -3,7 +3,7 @@
         .row
           .col.s6.m3.l2
             = f.label :category_id
-            = f.collection_select :category_id, @category, :id, :name, {include_blank: false}, {class: 'browser-default'}
+            = f.collection_select :category_id, @categories, :id, :name, {include_blank: false}, {class: 'browser-default'}
         .row
           .input-field.col.s12.m6.l4 
             = f.label :name
