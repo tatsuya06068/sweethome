@@ -92,7 +92,6 @@ require 'rails_helper'
                   visit current_path    
                   select(option=materials_used[1].product.category.name, from: "q[category_id_eq]")
                   select(option=materials_used[1].material.name, from: "q[materials_id_eq]")
-                  byebug
                   click_button '検索'
               end
               it '選択した項目を含む商品が表示されること' do
@@ -106,8 +105,13 @@ require 'rails_helper'
   end
 
 describe '詳細画面確認', type: :system do
-   it '選択した商品の詳細画面が表示すること'
+  context '任意の商品を選択後' do
+    before do
     
+    end
+
+    it '選択した商品の詳細画面が表示すること'
+  end  
 end
 
 describe '新規登録画面', type: :system do

@@ -19,8 +19,11 @@
        .col.s12.m4.l2	
        	.card
           .card-image
-              = image_tag product.image if product.image.attached?
-			  span = product.name
+            - if product.image.attached?
+              = image_tag product.image
+            - else
+              = image_tag '/assets/noimage.jpg'
+			span = product.name
 		.card-content
                		p = product.product_detail.description
         

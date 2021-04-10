@@ -6,7 +6,10 @@
       = button_to '削除', admin_product_path(@product), {method: :delete, data: {confirm: "商品名「#{@product.name}」を削除してよろしいでしょうか"}, class: 'btn red'}
 
   .row
-    = image_tag @product.image, class: 'col s12 m6 l6' if @product.image.attached? 
+    - if @product.image.attached? 
+      = image_tag @product.image, class: 'col s12 m6 l6'
+    - else
+      = image_tag '/assets/noimage.jpg', class: 'col s23 m6 l6'
     .row
       h4 = @product.name
       h5 = @product.product_detail.description
