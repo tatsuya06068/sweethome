@@ -107,7 +107,7 @@ require 'rails_helper'
 describe '詳細画面確認', type: :system do
   context '任意の商品を選択後' do
     before do
-    
+        
     end
 
     it '選択した商品の詳細画面が表示すること'

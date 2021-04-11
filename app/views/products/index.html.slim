@@ -14,16 +14,16 @@
             = f.button '検索', class: 'waves-effect waves-teal btn amber darken-3'
 
 .container.row.center
-
     - @products.each do |product|
-       .col.s12.m4.l2	
-       	.card
-          .card-image
-            - if product.image.attached?
-              = image_tag product.image
-            - else
-              = image_tag '/assets/noimage.jpg'
-			span = product.name
-		.card-content
-               		p = product.product_detail.description
-        
+       .col.s12.m4.l4
+        = link_to  product_path(product) 
+       	  .card.hoverable.small
+            .card-image
+              - if product.image.attached?
+                = image_tag product.image  
+              - else
+                = image_tag '/assets/noimage.jpg'
+              .card-title
+                span = product.name
+            .card-action
+              span a 

@@ -6,8 +6,9 @@ class ProductsController < ApplicationController
     @products = @q.result.includes(:product_detail, :category, materials: :materials_useds)
   end
 
-  def Show
-　 end
+  def show
+    @product = Product.find(params[:id]) 
+  end
 
   private
 
